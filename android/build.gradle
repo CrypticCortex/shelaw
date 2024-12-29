@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Specify the Android Gradle Plugin (AGP) version
+        classpath "com.android.tools.build:gradle:8.2.1"
+
+        // Kotlin plugin dependency
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Configure build directory locations for the project and subprojects
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+// Task to clean the project
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
