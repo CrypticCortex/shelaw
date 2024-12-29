@@ -17,7 +17,7 @@ class SheLAWApp extends StatelessWidget {
       title: 'SheLAW',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        primaryColor: AppColors.primaryRed,
+        primaryColor: AppColors.lightPink,
         hintColor: AppColors.deepPurple,
         textTheme: TextTheme(
           bodyLarge: TextStyle(color: AppColors.lightPink),

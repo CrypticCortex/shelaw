@@ -22,7 +22,7 @@ class ChatPageUI extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryRed,
+        backgroundColor: AppColors.deepPurple,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -248,7 +248,7 @@ class ChatPageUI extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
-                  borderSide: BorderSide(color: AppColors.primaryRed),
+                  borderSide: BorderSide(color: AppColors.lightPink),
                 ),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -260,11 +260,11 @@ class ChatPageUI extends StatelessWidget {
           const SizedBox(width: 12),
           Container(
             decoration: BoxDecoration(
-              color: AppColors.primaryRed,
+              color: AppColors.lightPink,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryRed.withOpacity(0.3),
+                  color: AppColors.lightPink.withOpacity(0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -296,7 +296,7 @@ class ChatPageUI extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.psychology_outlined,
-                      color: AppColors.primaryRed, size: 24),
+                      color: AppColors.lightPink, size: 24),
                   const SizedBox(width: 12),
                   const Text(
                     "AI Thought Process",
@@ -336,7 +336,7 @@ class ChatPageUI extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: TextButton.styleFrom(
-                    foregroundColor: AppColors.primaryRed,
+                    foregroundColor: AppColors.lightPink,
                   ),
                   child: const Text("Close"),
                 ),
@@ -362,7 +362,7 @@ class ChatPageUI extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.source_outlined,
-                      color: AppColors.primaryRed, size: 24),
+                      color: AppColors.lightPink, size: 24),
                   const SizedBox(width: 12),
                   const Text(
                     "Sources",
@@ -398,7 +398,7 @@ class ChatPageUI extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: TextButton.styleFrom(
-                    foregroundColor: AppColors.primaryRed,
+                    foregroundColor: AppColors.lightPink,
                   ),
                   child: const Text("Close"),
                 ),
@@ -421,7 +421,7 @@ class ChatPageUI extends StatelessWidget {
             child: Text(
               "Source ${index + 1}",
               style: TextStyle(
-                color: AppColors.primaryRed,
+                color: AppColors.lightPink,
                 decoration: TextDecoration.underline,
                 fontWeight: FontWeight.w600,
               ),

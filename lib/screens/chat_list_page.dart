@@ -79,7 +79,7 @@ class _ChatListPageState extends State<ChatListPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Logout failed: ${result['message']}"),
-          backgroundColor: AppColors.primaryRed,
+          backgroundColor: AppColors.lightPink,
         ),
       );
       setState(() {
@@ -121,7 +121,7 @@ class _ChatListPageState extends State<ChatListPage> {
       appBar: _buildAppBar(),
       body: const Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryRed),
+          valueColor: AlwaysStoppedAnimation<Color>(AppColors.lightPink),
         ),
       ),
     );
@@ -138,7 +138,7 @@ class _ChatListPageState extends State<ChatListPage> {
             Icon(
               Icons.error_outline_rounded,
               size: 48,
-              color: AppColors.primaryRed.withOpacity(0.7),
+              color: AppColors.lightPink.withOpacity(0.7),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -153,7 +153,7 @@ class _ChatListPageState extends State<ChatListPage> {
             ElevatedButton(
               onPressed: _fetchUserData,
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryRed,
+                backgroundColor: AppColors.lightPink,
                 foregroundColor: Colors.white,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -171,7 +171,7 @@ class _ChatListPageState extends State<ChatListPage> {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: AppColors.primaryRed,
+      backgroundColor: AppColors.lightPink,
       elevation: 0,
       title: const Text(
         "SheLaw AI",
@@ -194,7 +194,7 @@ class _ChatListPageState extends State<ChatListPage> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.primaryRed,
+        color: AppColors.lightPink,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
@@ -220,10 +220,10 @@ class _ChatListPageState extends State<ChatListPage> {
                       errorBuilder: (context, error, stackTrace) => const Icon(
                           Icons.person,
                           size: 40,
-                          color: AppColors.primaryRed),
+                          color: AppColors.lightPink),
                     )
                   : const Icon(Icons.person,
-                      size: 40, color: AppColors.primaryRed),
+                      size: 40, color: AppColors.lightPink),
             ),
           ),
           const SizedBox(height: 16),
@@ -322,7 +322,7 @@ class _ChatListPageState extends State<ChatListPage> {
                             ),
                             child: Icon(
                               Icons.chat_bubble_outline_rounded,
-                              color: AppColors.primaryRed.withOpacity(0.7),
+                              color: AppColors.lightPink.withOpacity(0.7),
                               size: 20,
                             ),
                           ),
@@ -387,7 +387,7 @@ class _ChatListPageState extends State<ChatListPage> {
           _loadChatSessions(); // reload sessions after new chat
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryRed,
+          backgroundColor: AppColors.lightPink,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(

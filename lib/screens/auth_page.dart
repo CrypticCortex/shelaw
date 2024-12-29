@@ -127,7 +127,7 @@ class _AuthPageState extends State<AuthPage>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result['message']),
-            backgroundColor: AppColors.primaryRed,
+            backgroundColor: AppColors.lightPink,
           ),
         );
       }
@@ -153,14 +153,14 @@ class _AuthPageState extends State<AuthPage>
       ),
       prefixIcon: Icon(
         icon,
-        color: AppColors.primaryRed.withOpacity(0.7),
+        color: AppColors.lightPink.withOpacity(0.7),
         size: 22,
       ),
       suffixIcon: isPassword
           ? IconButton(
               icon: Icon(
                 _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                color: AppColors.primaryRed.withOpacity(0.7),
+                color: AppColors.lightPink.withOpacity(0.7),
                 size: 22,
               ),
               onPressed: () {
@@ -180,21 +180,21 @@ class _AuthPageState extends State<AuthPage>
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: AppColors.primaryRed,
+          color: AppColors.lightPink,
           width: 2,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: AppColors.primaryRed.withOpacity(0.5),
+          color: AppColors.lightPink.withOpacity(0.5),
           width: 1.5,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(
-          color: AppColors.primaryRed,
+          color: AppColors.lightPink,
           width: 2,
         ),
       ),
@@ -219,7 +219,7 @@ class _AuthPageState extends State<AuthPage>
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primaryRed.withOpacity(0.15),
+                    color: AppColors.deepPurple.withOpacity(0.15),
                     blurRadius: 20 + (_floatAnimation.value * 0.5),
                     spreadRadius: 5,
                   ),
@@ -299,8 +299,8 @@ class _AuthPageState extends State<AuthPage>
                                     const SizedBox(height: 8),
                                     Text(
                                       _isLogin
-                                          ? 'Login. Ask. Get Answer'
-                                          : 'Sign for a free account chat easier than skimming tons of legal documents',
+                                          ? 'Login. Chat. Get Answer'
+                                          : 'Sign up. Chat. Get Answer',
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.grey[600],
@@ -379,7 +379,7 @@ class _AuthPageState extends State<AuthPage>
                               // TODO: Implement forgot password
                             },
                             style: TextButton.styleFrom(
-                              foregroundColor: AppColors.primaryRed,
+                              foregroundColor: AppColors.lightPink,
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 16,
                                 vertical: 8,
@@ -398,7 +398,7 @@ class _AuthPageState extends State<AuthPage>
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _submit,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryRed,
+                            backgroundColor: AppColors.deepPurple,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
