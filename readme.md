@@ -66,3 +66,7 @@ It (shelaw) is a comprehensive platform designed to provide legal advice to wome
     <img src="https://user-images.githubusercontent.com/891664/227103090-6624bf7d-9524-4e05-9d2c-c28d5d451481.png" alt="Chroma logo" height="40">
   </a>
 </p>
+
+## Purpose
+
+Submitted for Amrita GenAI x Gender Tech Hackathon
