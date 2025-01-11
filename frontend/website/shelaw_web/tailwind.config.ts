@@ -1,18 +1,26 @@
-import type { Config } from "tailwindcss";
+import { color } from "chart.js/helpers";
 
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        redCustom: '#A84234',
+        pinkCustom: '#986388',
+        lightPink: '#E298B8',
+        grape: '#62245B',
+        magenta: '#B50E48',
+        fuchsia: '#DA30A5',
+        peach: '#FFC2D7',
+        wine: '#6E1226',
+        gradientStart: '#AE4F63',
+        gradientEnd: '#000000',
+        color1: '#F9F9F9',
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
