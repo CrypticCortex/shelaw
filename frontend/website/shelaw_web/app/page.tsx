@@ -3,7 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { animations, motion, useAnimation, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { slideInFromTop } from './animations';
+import { slideInFromBottom } from "./animations";
+import { slideInFromLeft } from "./animations";
+import { slideInFromRight } from "./animations";
+import { fadeIn } from "./animations";
+
 
 
 export default function Home() {
@@ -18,6 +25,7 @@ export default function Home() {
   const handleModeSelect = (mode: string) => {
     setSelectedMode(mode);
   };
+
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -40,6 +48,8 @@ export default function Home() {
     </div>
   );
 }
+
+// Remove the extra closing curly brace
 
 function Header() {
   return (
@@ -95,10 +105,28 @@ function FullContent({ selectedMode, onModeSelect }: FullContentProps) {
 }
 
 function OnboardingSection() {
+  const animation = useAnimation();
+  const [contentRef, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-200px",
+  });
+
+  useEffect(() => {
+    if (inView) {
+      animation.start("visible");
+    }
+  }, [animation, inView]);
+
   return (
-    <section id="onboarding" className="min-h-screen flex items-center justify-between p-8">
+    <motion.section
+      id="onboarding"
+      className="min-h-screen flex items-center justify-between p-8"
+      ref={contentRef}
+      animate={animation}
+      initial="hidden"
+      variants={slideInFromTop as unknown as Variants}
+    >
       <div className="mt-16 mr-2">
-      
         <h1 className="text-7xl font-bold mb-6 bg-gradient-to-r from-magenta to-fuchsia text-transparent bg-clip-text animate-fade-in">
           Speak Out
         </h1>
@@ -118,64 +146,53 @@ function OnboardingSection() {
           className="rounded-lg shadow-lg animate-zoom-in"
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
-
+ 
 function AboutUsSection() {
   return (
-    <section id="aboutus" className="min-h-screen flex flex-wrap justify-around items-center p-8 bg-pink-50 space-y-16">
+    <motion.section 
+      id="aboutus"
+      className="min-h-screen flex flex-wrap justify-around items-center p-8 bg-pink-50 space-y-16"
+      initial="hidden"
+      animate="visible"
+      variants={slideInFromLeft as unknown as Variants}
+    >
+
       <motion.div
         initial={{ opacity: 0, translateY: 50 }}
         animate={{ opacity: 1, translateY: 0 }}
         transition={{ duration: 1 }}
         className="bg-white p-8 m-4 rounded-lg shadow-lg max-w-xl flex-1 transform hover:scale-105 transition-transform duration-300"
       >
-        <h2 className="text-5xl font-extrabold text-magenta mb-6">
-          What We Do
-        </h2>
+        <h2 className="text-5xl font-extrabold text-magenta mb-6">What We Do</h2>
         <p className="text-lg text-gray-800 mb-4">
           SHE LAW bridges the gap between women and the legal world by offering:
         </p>
         <div className="space-y-4">
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Legal Information
-            </h3>
-            <p className="text-gray-700">
-              Easy-to-understand explanations of laws and rights.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">Legal Information</h3>
+            <p className="text-gray-700">Easy-to-understand explanations of laws and rights.</p>
           </div>
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Guidance & Resources
-            </h3>
-            <p className="text-gray-700">
-              Step-by-step advice on what actions to take.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">Guidance & Resources</h3>
+            <p className="text-gray-700">Step-by-step advice on what actions to take.</p>
           </div>
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Supportive Community
-            </h3>
-            <p className="text-gray-700">
-              A safe space for women to share concerns.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">Supportive Community</h3>
+            <p className="text-gray-700">A safe space for women to share concerns.</p>
           </div>
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              AI-Powered Assistance
-            </h3>
-            <p className="text-gray-700">
-              Smart solutions with personalized suggestions.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">AI-Powered Assistance</h3>
+            <p className="text-gray-700">Smart solutions with personalized suggestions.</p>
           </div>
         </div>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, translateY: 50 }}
+        animate={{ opacity: 1, translateY: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
         className="flex justify-center items-center m-4 transform hover:rotate-6 transition-transform duration-500"
       >
@@ -194,46 +211,38 @@ function AboutUsSection() {
         transition={{ duration: 1, delay: 0.5 }}
         className="bg-white p-8 m-4 rounded-lg shadow-lg max-w-xl flex-1 transform hover:scale-105 transition-transform duration-300"
       >
-        <h2 className="text-5xl font-extrabold text-magenta mb-6">
-          Why SHE LAW?
-        </h2>
+        <h2 className="text-5xl font-extrabold text-magenta mb-6">Why SHE LAW?</h2>
         <p className="text-lg text-gray-800 mb-4">
           SHE LAW was created to dismantle barriers by providing a platform that is:
         </p>
         <div className="space-y-4">
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Safe
-            </h3>
-            <p className="text-gray-700">
-              Privacy and confidentiality are our priorities.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">Safe</h3>
+            <p className="text-gray-700">Privacy and confidentiality are our priorities.</p>
           </div>
           <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Accessible
-            </h3>
-            <p className="text-gray-700">
-              Easy-to-use for women of all backgrounds.
-            </p>
+            <h3 className="text-xl font-semibold text-pink-700 mb-2">Accessible</h3>
+            <p className="text-gray-700">Easy-to-use for women of all backgrounds.</p>
           </div>
-          <div className="bg-pink-100 p-4 rounded">
-            <h3 className="text-xl font-semibold text-pink-700 mb-2">
-              Empowering
-            </h3>
-            <p className="text-gray-700">
-              Equipping you with the tools and knowledge to take control.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-    </section>
-  );
+          <div className="bg-pink-100 p-4 rounded"></div>
+  <h3 className="text-xl font-semibold text-pink-700 mb-2">Empowering</h3>
+  <p className="text-gray-700">Equipping you with the tools and knowledge to take control.</p>
+</div>
+</motion.div>
+</motion.section>
+);
 }
+
 
 function WhoWeServeSection() {
   return (
-    <section id="who-we-serve" className="min-h-screen flex flex-col items-center justify-center bg-pink-100 px-8">
+    <motion.section
+      id="who-we-serve"
+      className="min-h-screen flex flex-col items-center justify-center bg-pink-100 px-8"
+      initial="hidden"
+      animate="visible"
+      variants={slideInFromBottom as unknown as Variants}  
+    >
       <h1 className="text-7xl font-bold mb-1 bg-gradient-to-r from-magenta to-fuchsia text-transparent bg-clip-text animate-fade-in">
         For Every Woman Everywhere
       </h1>
@@ -271,7 +280,7 @@ function WhoWeServeSection() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 
